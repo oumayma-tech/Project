@@ -5,10 +5,11 @@ import React, { useEffect } from 'react';
 import "./productlist.css"
 import {Link} from 'react-router-dom'
 import editBtn from '../../../Assets/edit.png'
-import { editProduct } from '../../../redux/action/productaction'
+import { editProduct,deleteProduct } from '../../../redux/action/productaction'
 import Hand from '../../../Assets/hand.jpg'
 import RemoveJS from "./remove";
 import AddProduct from "./addproduct";
+
 
 const Productcard=({product})=>{
     const dispatch = useDispatch()
@@ -23,10 +24,11 @@ const Productcard=({product})=>{
         <h5 className="card-title">{product && product.title}</h5>
         <p className="card-text">{product && product.description}.</p>
         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
+        <Button variant="primary" onClick={()=>dispatch(deleteProduct(product._id))}>delete</Button>{' '}
       
       </div>
     </div>
-    <RemoveJS/>
+    {/* <RemoveJS/> */}
     <AddProduct/>
     </div>
     );
